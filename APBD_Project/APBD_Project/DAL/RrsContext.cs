@@ -1,4 +1,5 @@
 ﻿using APBD_Project.Models;
+using APBD_Project.Models.RrsDbModels;
 using Microsoft.EntityFrameworkCore;
 
 namespace APBD_Project.DAL;
@@ -13,7 +14,11 @@ public class RrsContext : DbContext
     public DbSet<Software> Softwares { get; set; }
     public DbSet<Discount> Discounts { get; set; }
     public DbSet<Client> Clients { get; set; }
-    
+
+    protected RrsContext()
+    {
+    }
+
     public RrsContext(DbContextOptions<RrsContext> options) : base(options)
     {
     }

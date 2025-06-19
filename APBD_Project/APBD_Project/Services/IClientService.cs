@@ -13,5 +13,5 @@ public interface IClientService
     public Task<Response> UpdateCompanyAsync(int id, CompanyUpdateDto? updateDto,
         CancellationToken cancellationToken);
 
-    public Task<int> DeleteClientAsync(int id, CancellationToken cancellationToken);
+    public Task DeleteClientAsync(int id, CancellationToken cancellationToken);
 }

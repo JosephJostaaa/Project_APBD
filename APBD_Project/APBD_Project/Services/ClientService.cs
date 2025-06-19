@@ -2,6 +2,7 @@
 using APBD_Project.Dto;
 using APBD_Project.Exceptions;
 using APBD_Project.Models;
+using APBD_Project.Models.RrsDbModels;
 using Microsoft.EntityFrameworkCore;
 
 namespace APBD_Project.Services;
@@ -184,13 +185,15 @@ public class ClientService : IClientService
         };
     }
     
-    public async Task<int> DeleteClientAsync(int id, CancellationToken cancellationToken)
+    public async Task DeleteClientAsync(int id, CancellationToken cancellationToken)
     {
-        return await _rrsContext.Clients
-            .Where(c => c.ClientId == id && !c.IsDeleted)
-            .ExecuteUpdateAsync(
-                u => u.SetProperty(c => c.IsDeleted, true),
-                cancellationToken);
+        var found = await _rrsContext.Clients.FirstOrDefaultAsync(c => c.ClientId == id, cancellationToken);
+        if (found == null)
+        {
+            throw new NotFoundException("Client not found.");
+        }
+        found.IsDeleted = true;
+        await _rrsContext.SaveChangesAsync(cancellationToken:cancellationToken);
     }
 
     private async Task<bool> IsUniqueEmailAsync(string email, Client client, CancellationToken cancellationToken)

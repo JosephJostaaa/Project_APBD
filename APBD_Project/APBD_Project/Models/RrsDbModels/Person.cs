@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace APBD_Project.Models;
+namespace APBD_Project.Models.RrsDbModels;
 
 public class Person : Client
 {

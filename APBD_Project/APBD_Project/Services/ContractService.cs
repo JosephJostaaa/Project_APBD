@@ -2,6 +2,7 @@
 using APBD_Project.Dto;
 using APBD_Project.Exceptions;
 using APBD_Project.Models;
+using APBD_Project.Models.RrsDbModels;
 using Microsoft.EntityFrameworkCore;
 
 namespace APBD_Project.Services;

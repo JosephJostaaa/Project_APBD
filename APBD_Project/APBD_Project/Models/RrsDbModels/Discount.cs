@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using APBD_Project.Models.RrsDbModels;
 
 namespace APBD_Project.Models;
 
